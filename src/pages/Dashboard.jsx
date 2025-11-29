@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { api } from '../utils/api';
 import { 
@@ -15,6 +15,12 @@ import {
 
 const Dashboard = () => {
   const { user } = useAuth();
+
+  // Redirect admins to admin dashboard
+  if (user?.role === 'admin') {
+    return <Navigate to="/admin" replace />;
+  }
+
   const [stats, setStats] = useState({
     donations: 0,
     requests: 0,

@@ -35,8 +35,11 @@ const Navbar = () => {
     { name: "Drives", path: "/drives", icon: Calendar },
   ];
 
+  // Dynamic dashboard path based on role
+  const dashboardPath = user?.role === "admin" ? "/admin" : "/dashboard";
+
   const userNavItems = [
-    { name: "Dashboard", path: "/dashboard", icon: Home },
+    { name: "Dashboard", path: dashboardPath, icon: Home },
     { name: "Profile", path: "/profile", icon: User },
     { name: "Settings", path: "/profile", icon: Settings },
   ];
